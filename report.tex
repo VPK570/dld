@@ -1,0 +1,750 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
+\geometry{top=0.8in, bottom=0.8in, left=1in, right=1in}
+
+\emergencystretch=3em
+\hbadness=10000
+\vbadness=10000
+\hfuzz=100pt
+\tolerance=9999
+\sloppy
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{verilog}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    language=Verilog
+}
+
+\lstset{style=verilog}
+
+\begin{document}
+
+% ==================== TITLE PAGE ====================
+\thispagestyle{empty}
+\begin{center}
+{\Large \textbf{VELLORE INSTITUTE OF TECHNOLOGY}} \\[0.2cm]
+{\large School of Electronics and Communication Engineering (SENSE)} \\
+{\large Vellore, Tamil Nadu, India} \\[1cm]
+
+{\Large \textbf{MINI PROJECT REPORT}} \\[0.3cm]
+{\large BAECE102 -- Digital Logic Design} \\[0.3cm]
+{\large on} \\[0.3cm]
+{\Large \textbf{Hierarchical Design and Implementation of CD4017-Based Digital Code Lock with Sequential Access Control}} \\[1.5cm]
+
+{\large \textbf{Submitted By}} \\[0.2cm]
+{\large Gopika G} \\
+{\large Register No: 25BML0056} \\
+{\large Electronics and Communication Engineering} \\
+{\large gopika.g2025@vitstudent.ac.in} \\[1cm]
+
+{\large \textbf{Faculty Advisor}} \\[0.2cm]
+{\large Dr. Palla Penchalaiah} \\
+{\large School of Electronics and Communication Engineering} \\
+{\large VIT Vellore} \\[1cm]
+
+{\large Academic Year 2025 -- 2026}
+\end{center}
+
+% ==================== BONAFIDE CERTIFICATE ====================
+\clearpage
+\chapter*{Bonafide Certificate}
+\addcontentsline{toc}{chapter}{Bonafide Certificate}
+
+This is to certify that the project report entitled \textbf{``Hierarchical Design and Implementation of CD4017-Based Digital Code Lock with Sequential Access Control''} is a bonafide record of work carried out by \textbf{Gopika G} (25BML0056) under my supervision and guidance in partial fulfillment of the requirements for the degree of Bachelor of Technology in Electronics and Communication Engineering.
+
+\vspace{2cm}
+\noindent
+\begin{minipage}{0.45\textwidth}
+    \rule{5cm}{0.4pt}\\Dr. Palla Penchalaiah\\Faculty Advisor\\SENSE, VIT Vellore
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \rule{5cm}{0.4pt}\\Head of Department\\Department of ECE\\VIT Vellore
+\end{minipage}
+
+\vspace{1cm}
+\noindent External Examiner: \rule{5cm}{0.4pt}
+\vspace{1cm}
+\noindent Date: \rule{3cm}{0.4pt} \hfill Place: Vellore
+
+% ==================== ACKNOWLEDGEMENT ====================
+\clearpage
+\chapter*{Acknowledgement}
+\addcontentsline{toc}{chapter}{Acknowledgement}
+
+I express my sincere gratitude to my project guide, \textbf{Dr. Palla Penchalaiah}, for their invaluable guidance, continuous encouragement, and constructive feedback throughout the course of this project. Their expertise in digital design and Verilog HDL was instrumental in shaping this work.
+
+I am also thankful to the Department of Electronics and Communication Engineering, School of Electronics and Communication Engineering (SENSE), VIT Vellore, for providing the necessary infrastructure and laboratory facilities required for this project.
+
+I extend my gratitude to my peers and colleagues who provided helpful discussions and technical insights during the development and testing phases.
+
+Finally, I thank my family for their unwavering support and motivation throughout my academic journey.
+
+\vspace{1cm}
+\noindent\textbf{Gopika G}\\Register No: 25BML0056\\B.Tech, ECE
+
+% ==================== DECLARATION ====================
+\clearpage
+\chapter*{Declaration}
+\addcontentsline{toc}{chapter}{Declaration}
+
+I hereby declare that the project report entitled \textbf{``Hierarchical Design and Implementation of CD4017-Based Digital Code Lock with Sequential Access Control''} submitted by me to VIT Vellore, is a record of original work carried out by me under the supervision of \textbf{Dr. Palla Penchalaiah}. The matter embodied in this report has not been submitted for the award of any other degree, diploma, fellowship, or any similar title.
+
+\vspace{2cm}
+\noindent Date: \rule{3cm}{0.4pt} \hfill Place: Vellore
+\vspace{1.5cm}
+\noindent\textbf{Gopika G}\\Register No: 25BML0056
+
+% ==================== FRONT MATTER ====================
+\clearpage
+\tableofcontents
+\clearpage
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\clearpage
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+% ==================== ABSTRACT ====================
+\clearpage
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+This project presents the design, implementation, and verification of a hierarchical 5-stage digital code lock system based on the CD4017 CMOS decade counter architecture. The system implements a sequential access control mechanism with the code sequence A$\rightarrow$B$\rightarrow$B$\rightarrow$C$\rightarrow$D$\rightarrow$E, featuring comprehensive wrong-code detection that triggers an immediate alarm and reset upon any invalid key press. The CD4017 counter is modeled from first principles using Verilog HDL, employing a bottom-up hierarchical approach comprising a D flip-flop with asynchronous reset, clock control logic, a 5-stage Johnson counter, and a 10-output decoder. Five instances of the CD4017 module are interconnected to form the complete code lock system, with inter-stage clock inhibit signals ensuring correct sequential progression and combinational logic gates implementing the wrong-code detection mechanism. The design was verified using Icarus Verilog simulation with a comprehensive testbench covering seven test scenarios including correct sequence execution, wrong key detection at various stages, premature unlock prevention, reset recovery, and multiple failure recovery. All test cases passed successfully, confirming 100\% reliability in wrong-code detection and correct sequential access control. The project bridges the gap between analog IC implementation and digital HDL design, providing educational value in understanding counter architectures, hierarchical modeling techniques, and sequential circuit design.
+
+\textbf{Keywords:} Digital Code Lock, CD4017, Johnson Counter, Verilog HDL, Hierarchical Modeling, Sequential Circuits, Wrong Code Detection, Icarus Verilog, FPGA
+
+% ==================== 1. INTRODUCTION ====================
+\chapter{Introduction}
+
+\section{Background}
+
+Digital security systems have evolved significantly from mechanical combination locks to sophisticated electronic access control systems. Sequential logic circuits form the foundation of many digital access control systems, where the correct sequence of inputs must be provided to grant access. The CD4017 CMOS decade counter is a widely used integrated circuit that implements a Johnson counter architecture with 10 decoded outputs, extensively employed in educational projects, industrial sequencing applications, and simple security systems.
+
+\section{Motivation}
+
+While microcontroller-based code locks are prevalent in modern applications, understanding the underlying digital logic that such systems abstract away is essential for electronics education. This project bridges the gap between analog breadboard implementations and digital HDL design approaches by modeling the CD4017 counter from its fundamental building blocks using Verilog HDL.
+
+\section{Objectives}
+
+\begin{enumerate}
+    \item Design the CD4017 decade counter from scratch using Verilog HDL with a hierarchical bottom-up approach
+    \item Implement a 5-stage sequential code lock system using multiple CD4017 instances with the code A$\rightarrow$B$\rightarrow$B$\rightarrow$C$\rightarrow$D$\rightarrow$E
+    \item Develop a comprehensive wrong-code detection mechanism that triggers alarm and reset on any invalid input
+    \item Verify functionality through simulation using Icarus Verilog with multiple test scenarios
+    \item Compare analog IC-based and digital HDL-based implementation approaches
+\end{enumerate}
+
+% ==================== 2. LITERATURE SURVEY ====================
+\chapter{Literature Survey}
+
+\section{Existing Code Lock Designs}
+
+Digital code locks have been implemented using various technologies. Microcontroller-based locks utilize programmable devices such as Arduino, PIC, or ARM processors to manage keypad input, code comparison, and access control \cite{mano2013digital}. Discrete IC-based locks employ individual logic gates, flip-flops, and counter ICs to implement the locking mechanism, providing educational value in understanding digital circuit fundamentals \cite{friendlywire2021cd4017}. FPGA-based security systems leverage programmable logic devices to implement complex access control algorithms with high reliability and reconfigurability.
+
+\section{CD4017 Decade Counter}
+
+The CD4017 is a CMOS decade counter that implements a 5-stage Johnson counter architecture with combinational decoding logic to produce 10 decoded outputs \cite{ti2023cd4017}. The Johnson counter principle, also known as a twisted-ring counter, operates by circulating a pattern of ones and zeros through a shift register with inverted feedback from the last stage to the first, producing a sequence of $2n$ unique states for an $n$-stage counter, yielding 10 states for a 5-stage implementation.
+
+\section{Research Gap}
+
+Despite the widespread use of the CD4017 in educational projects, there exists a limited number of resources that model its internal architecture using HDL with a hierarchical approach. Most educational materials focus on behavioral modeling at a high level of abstraction, without exposing the internal flip-flop structure, clock control mechanisms, and decoder logic.
+
+% ==================== 3. SYSTEM OVERVIEW ====================
+\chapter{System Overview}
+
+\section{Problem Definition}
+
+The problem addressed in this project is the design of a secure 5-stage sequential code lock system that requires the correct sequence of key presses (A$\rightarrow$B$\rightarrow$B$\rightarrow$C$\rightarrow$D$\rightarrow$E) to unlock, detects any wrong-code attempt and triggers an immediate alarm and reset, and is implemented using a hierarchical design methodology.
+
+\section{Proposed System}
+
+The proposed system consists of two main hierarchical layers. At the lower level, the CD4017 decade counter is modeled using four sub-modules: a D flip-flop with asynchronous reset, a clock control module with inhibit functionality, a 5-stage Johnson counter, and a 10-output decoder. At the higher level, five instances of the CD4017 module are interconnected to form the complete code lock system, with inter-stage clock inhibit signals ensuring sequential progression and combinational logic implementing wrong-code detection.
+
+The system architecture is as follows: five CD4017 stages are connected in series, where each stage's clock inhibit input is controlled by the previous stage's completion signal. The wrong-code detection module monitors all key inputs against the current active stage and triggers an alarm signal when an invalid key is pressed. The lock control logic generates the lock-open signal upon successful completion of all five stages and manages the reset distribution to all stages.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{hardware_breadboard.jpg}
+    \caption{Hardware implementation of the CD4017 code lock on breadboard (analog implementation)}
+    \label{fig:hardware}
+\end{figure}
+
+% ==================== 4. THEORETICAL BACKGROUND ====================
+\chapter{Theoretical Background}
+
+\section{Johnson Counter Fundamentals}
+
+A Johnson counter, also known as a twisted-ring counter or switch-tail ring counter, is a modified shift register configuration where the complement of the last stage's output is fed back to the input of the first stage. For an $n$-stage Johnson counter, the circuit produces $2n$ unique states before repeating.
+
+\begin{table}[H]
+    \centering
+    \caption{5-Stage Johnson Counter State Sequence}
+    \label{tab:johnson_states}
+    \begin{tabular}{ccccccc}
+        \toprule
+        \textbf{Count} & \textbf{q[4]} & \textbf{q[3]} & \textbf{q[2]} & \textbf{q[1]} & \textbf{q[0]} & \textbf{Active Output} \\
+        \midrule
+        0 & 0 & 0 & 0 & 0 & 0 & Q0 \\
+        1 & 1 & 0 & 0 & 0 & 0 & Q1 \\
+        2 & 1 & 1 & 0 & 0 & 0 & Q2 \\
+        3 & 1 & 1 & 1 & 0 & 0 & Q3 \\
+        4 & 1 & 1 & 1 & 1 & 0 & Q4 \\
+        5 & 1 & 1 & 1 & 1 & 1 & Q5 \\
+        6 & 0 & 1 & 1 & 1 & 1 & Q6 \\
+        7 & 0 & 0 & 1 & 1 & 1 & Q7 \\
+        8 & 0 & 0 & 0 & 1 & 1 & Q8 \\
+        9 & 0 & 0 & 0 & 0 & 1 & Q9 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+The Johnson counter offers advantages over binary counters including simpler decoding logic (each state requires only a 2-input AND gate for full decoding), glitch-free state transitions (only one bit changes per clock cycle), and inherent self-starting behavior when combined with proper reset initialization.
+
+\section{CD4017 Architecture}
+
+The CD4017 integrates three functional blocks: a 5-stage Johnson counter core that generates 10 unique states, a 10-output decoder that converts the Johnson counter state to one-hot decoded outputs, and control logic comprising clock, reset, and clock inhibit inputs. The carry output (CO) goes high when the count reaches 9 (Q9 active), enabling cascading of multiple CD4017 devices for extended counting ranges.
+
+The clock inhibit (CI) input provides a mechanism to disable counting while maintaining the current state, which is essential for this code lock application as it enables inter-stage locking. The reset (RES) input asynchronously clears all flip-flops, setting Q0 high and all other outputs low.
+
+\section{Sequential Access Control}
+
+Sequential access control requires inputs to be provided in a specific order. In this implementation, each stage of the code lock corresponds to one group in the code sequence. A stage is only enabled (clock inhibit deasserted) when the previous stage has completed its required number of key presses. This mechanism ensures that keys pressed out of sequence are detected as wrong-code attempts. The wrong-code detection logic monitors all key inputs and compares them against the set of currently active stages, triggering an alarm when a key is pressed that does not correspond to any active stage.
+
+% ==================== 5. DESIGN METHODOLOGY ====================
+\chapter{Design Methodology}
+
+\section{Hierarchical Design Approach}
+
+The design employs a bottom-up hierarchical methodology where the simplest building blocks are designed and verified first, then composed into increasingly complex modules.
+
+\begin{verbatim}
+code_lock_system (top-level)
++-- cd4017_top (x5 instances: stage1-stage5)
+|   +-- clock_control
+|   +-- johnson_counter_5stage
+|   |   +-- dff_with_reset (x5 instances)
+|   +-- decoder_10output
++-- wrong_code_detection (registered logic)
++-- lock_control_logic (success detection)
+\end{verbatim}
+
+This approach offers modularity (each module has a well-defined interface and can be tested independently), reusability (the D flip-flop and clock control modules are instantiated multiple times), debuggability (issues can be isolated to specific modules), and scalability (the architecture can be extended by adding more stages).
+
+\section{CD4017 Internal Design}
+
+\subsection{D Flip-Flop with Reset}
+
+The fundamental building block is a D flip-flop with asynchronous active-high reset. The flip-flop captures the data input on the positive edge of the clock and provides both normal (Q) and complementary (QN) outputs. The asynchronous reset takes priority over the clock, immediately forcing Q to 0 regardless of the clock state. This priority is implemented using the sensitivity list \texttt{always @(posedge clk or posedge reset)}.
+
+\subsection{Clock Control Module}
+
+The clock control module implements clock gating logic that combines the external clock input with the clock inhibit and reset signals. The gated clock output is computed as:
+
+\begin{lstlisting}[language=Verilog]
+assign clk_out = clk_in & ~clk_inhibit & ~reset;
+\end{lstlisting}
+
+This ensures that no clock pulses reach the Johnson counter when either the inhibit signal is active or the reset is asserted, preventing unintended state transitions.
+
+\subsection{5-Stage Johnson Counter}
+
+The Johnson counter instantiates five D flip-flops in a ring configuration with inverted feedback. The feedback connection from the complement of the last stage to the input of the first stage creates the characteristic Johnson counter sequence. Each flip-flop's output drives the next stage's input, forming a shift register chain.
+
+\subsection{10-Output Decoder}
+
+The decoder maps each of the 10 Johnson counter states to a unique one-hot output using a case statement. The decoding is based on the specific bit patterns produced by the Johnson counter sequence, ensuring that exactly one output is high at any given time during normal operation.
+
+\subsection{CD4017 Top Module}
+
+The top-level CD4017 module integrates the clock control, Johnson counter, and decoder modules. It provides the standard CD4017 pin interface: clock (pin 14), clock inhibit (pin 13), reset (pin 15), 10 decoded outputs (Q0-Q9), and carry out (pin 12).
+
+\section{Code Lock System Design}
+
+\subsection{Stage Instantiation}
+
+Five CD4017 instances are used, each corresponding to one group in the code sequence A$\rightarrow$B$\rightarrow$B$\rightarrow$C$\rightarrow$D$\rightarrow$E. Stage 1 receives key A directly with clock inhibit permanently deasserted. Stage 2 receives key B with clock inhibit controlled by Stage 1's Q1 output. Stage 3 also receives key B but with clock inhibit controlled by Stage 2's Q1 output and an additional interlock on the key signal to prevent ripple-through on a single press. Stages 4 and 5 receive keys C and D respectively, with clock inhibit controlled by the preceding stage's completion.
+
+\subsection{Wrong Code Detection Logic}
+
+The wrong-code detection mechanism uses registered logic sampled on the positive edge of each key press. For each key, the logic checks whether any stage that responds to that key is currently active. If a key is pressed when no corresponding stage is active, the alarm register is set. The stage active signals are computed as:
+
+\begin{itemize}
+    \item Stage 1 active: Q0 of Stage 1 is high (reset position)
+    \item Stage 2 active: Q1 of Stage 1 is high AND Q1 of Stage 2 is low
+    \item Stage 3 active: Q1 of Stage 2 is high AND Q1 of Stage 3 is low
+    \item Stage 4 active: Q1 of Stage 3 is high AND Q1 of Stage 4 is low
+    \item Stage 5 active: Q1 of Stage 4 is high AND Q1 of Stage 5 is low
+\end{itemize}
+
+\subsection{Success Detection}
+
+The lock-open signal is generated when key E is pressed while Stage 5 is active (Q1 of Stage 4 is high and Q1 of Stage 5 is low), indicating that all previous stages have been completed. The signal is registered to prevent glitches and is cleared on reset or alarm conditions.
+
+\section{State Diagram}
+
+The code lock operates as a finite state machine with the following states:
+
+\begin{itemize}
+    \item \textbf{RESET:} All stages at initial position, waiting for first key press
+    \item \textbf{STAGE\_1:} Key A accepted, Stage 1 advancing
+    \item \textbf{STAGE\_2:} Stage 1 complete, waiting for first B press
+    \item \textbf{STAGE\_3:} First B complete, waiting for second B press
+    \item \textbf{STAGE\_4:} Stage 2 complete, waiting for C press
+    \item \textbf{STAGE\_5:} Stage 3 complete, waiting for D press
+    \item \textbf{STAGE\_6:} Stage 4 complete, waiting for E press
+    \item \textbf{UNLOCKED:} All stages complete, lock open
+    \item \textbf{ALARM:} Wrong code detected, reset triggered
+\end{itemize}
+
+Transitions between states occur on valid key presses, while any invalid key press causes an immediate transition to the ALARM state.
+
+% ==================== 6. VERILOG HDL IMPLEMENTATION ====================
+\chapter{Verilog HDL Implementation}
+
+\section{Module Descriptions}
+
+\subsection{D Flip-Flop Module}
+
+\begin{lstlisting}[language=Verilog, caption=D Flip-Flop with Asynchronous Reset]
+module dff_with_reset(
+    input clk, input reset, input d,
+    output reg q, output qn
+);
+    always @(posedge clk or posedge reset) begin
+        if (reset) q <= 1'b0;
+        else q <= d;
+    end
+    assign qn = ~q;
+endmodule
+\end{lstlisting}
+
+\subsection{Johnson Counter Module}
+
+\begin{lstlisting}[language=Verilog, caption=5-Stage Johnson Counter]
+module johnson_counter_5stage(
+    input clk, input reset, output [4:0] q
+);
+    wire [4:0] qn;
+    wire feedback;
+    assign feedback = ~q[4];
+    dff_with_reset stage0 (.clk(clk), .reset(reset), .d(feedback), .q(q[0]), .qn(qn[0]));
+    dff_with_reset stage1 (.clk(clk), .reset(reset), .d(q[0]), .q(q[1]), .qn(qn[1]));
+    dff_with_reset stage2 (.clk(clk), .reset(reset), .d(q[1]), .q(q[2]), .qn(qn[2]));
+    dff_with_reset stage3 (.clk(clk), .reset(reset), .d(q[2]), .q(q[3]), .qn(qn[3]));
+    dff_with_reset stage4 (.clk(clk), .reset(reset), .d(q[3]), .q(q[4]), .qn(qn[4]));
+endmodule
+\end{lstlisting}
+
+\subsection{Decoder Module}
+
+\begin{lstlisting}[language=Verilog, caption=10-Output Decoder]
+module decoder_10output(input [4:0] q, output reg [9:0] out);
+    always @(*) begin
+        case (q)
+            5'b00000: out = 10'b0000000001;
+            5'b10000: out = 10'b1000000000;
+            5'b11000: out = 10'b0100000000;
+            5'b11100: out = 10'b0010000000;
+            5'b11110: out = 10'b0001000000;
+            5'b11111: out = 10'b0000100000;
+            5'b01111: out = 10'b0000010000;
+            5'b00111: out = 10'b0000001000;
+            5'b00011: out = 10'b0000000100;
+            5'b00001: out = 10'b0000000010;
+            default:  out = 10'b0000000001;
+        endcase
+    end
+endmodule
+\end{lstlisting}
+
+\section{Design Modeling Techniques}
+
+The design employs multiple modeling techniques: behavioral modeling (D flip-flop, decoder), structural modeling (Johnson counter, CD4017 top module), dataflow modeling (clock control, stage active detection), and mixed modeling (code lock system combining behavioral registered logic with structural instantiation).
+
+% ==================== 7. SIMULATION AND VERIFICATION ====================
+\chapter{Simulation and Verification}
+
+\section{Simulation Environment}
+
+The design was simulated using Icarus Verilog (iverilog) as the simulation engine with VCD (Value Change Dump) output for waveform visualization. The testbench employs tasks for reusable key press sequences and reset operations, with continuous monitoring via \texttt{\$monitor} for real-time output tracking.
+
+\section{Test Scenarios and Results}
+
+Seven test scenarios were executed to comprehensively verify the design:
+
+\begin{table}[H]
+    \centering
+    \caption{Test Scenarios and Results}
+    \label{tab:test_results}
+    \begin{tabular}{|p{3cm}|p{5cm}|c|}
+        \hline
+        \textbf{Test} & \textbf{Description} & \textbf{Result} \\
+        \hline
+        TEST 1 & Correct sequence A$\rightarrow$B$\rightarrow$B$\rightarrow$C$\rightarrow$D$\rightarrow$E & PASS \\
+        \hline
+        TEST 2 & Wrong first key (B instead of A) & PASS \\
+        \hline
+        TEST 3 & Wrong key at Stage 2 (A$\rightarrow$C) & PASS \\
+        \hline
+        TEST 4 & Skipping second B press (A$\rightarrow$B$\rightarrow$C) & PASS \\
+        \hline
+        TEST 5 & Pressing E too early (A$\rightarrow$B$\rightarrow$E) & PASS \\
+        \hline
+        TEST 6 & Reset mid-sequence and retry & PASS \\
+        \hline
+        TEST 7 & Multiple wrong attempts then correct & PASS \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Simulation Waveforms}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{waveform_correct.png}
+    \caption{GTKWave waveform: correct code sequence A$\rightarrow$B$\rightarrow$B$\rightarrow$C$\rightarrow$D$\rightarrow$E showing stage progression and successful unlock}
+    \label{fig:waveform_correct}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{waveform_wrong.png}
+    \caption{GTKWave waveform: wrong-code detection showing alarm trigger on invalid key press}
+    \label{fig:waveform_wrong}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{waveform_johnson.png}
+    \caption{GTKWave waveform: Johnson counter q[4:0] state progression through 10 clock cycles}
+    \label{fig:waveform_johnson}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{waveform_decoder.png}
+    \caption{GTKWave waveform: decoder one-hot outputs Q0-Q9 showing single-active-output behavior}
+    \label{fig:waveform_decoder}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{console_output.png}
+    \caption{Simulation console output showing all 7 test cases passing}
+    \label{fig:console}
+\end{figure}
+
+\section{Timing Analysis}
+
+The design operates with combinational logic paths between key inputs and alarm/lock outputs. The critical path in the wrong-code detection logic traverses the stage active detection combinational logic and the alarm register setup path. The registered alarm and lock-open signals ensure glitch-free outputs by sampling on key press edges rather than responding combinationally.
+
+% ==================== 8. COMPARISON: ANALOG vs DIGITAL ====================
+\chapter{Comparison: Analog vs Digital Implementation}
+
+\begin{table}[H]
+    \centering
+    \caption{Analog IC-Based vs Verilog HDL-Based Implementation Comparison}
+    \label{tab:comparison}
+    \begin{tabular}{|l|p{5cm}|p{5cm}|}
+        \hline
+        \textbf{Parameter} & \textbf{Analog (IC-Based)} & \textbf{Digital (Verilog RTL)} \\
+        \hline
+        Design Tool & Circuit schematic editor & HDL code editor \\
+        \hline
+        Implementation & Breadboard/PCB with discrete ICs & FPGA synthesis or ASIC \\
+        \hline
+        Debugging & Oscilloscope, logic probes & Waveform viewer, console output \\
+        \hline
+        Scalability & Limited by physical space & Highly scalable \\
+        \hline
+        Cost & Component cost per unit & One-time development cost \\
+        \hline
+        Flexibility & Fixed hardware & Reconfigurable \\
+        \hline
+        Development Time & Hours to days & Minutes to hours \\
+        \hline
+        Power Consumption & Low (CMOS ICs at 9V) & Depends on FPGA device \\
+        \hline
+        Educational Value & Hands-on circuit building & Understanding abstraction and RTL \\
+        \hline
+    \end{tabular}
+\end{table}
+
+The dual approach of studying both the analog breadboard implementation and the digital HDL implementation provides unique educational insights. The analog implementation teaches practical skills in circuit construction, component selection, breadboard layout, and physical debugging. The HDL implementation teaches abstraction levels, hierarchical design methodology, testbench development, and simulation-based verification.
+
+% ==================== 9. RESULTS AND DISCUSSION ====================
+\chapter{Results and Discussion}
+
+\section{Functional Verification Results}
+
+All seven test scenarios passed successfully, confirming correct sequential progression through all five stages, 100\% reliability in wrong-code detection across all tested failure modes, proper alarm triggering and reset distribution on invalid key presses, successful system recovery after mid-sequence reset, and correct operation after multiple consecutive wrong-code attempts.
+
+\section{Performance Analysis}
+
+The hierarchical design approach resulted in a clean, modular codebase with six Verilog source files totaling approximately 250 lines. The CD4017 module (four sub-modules) is fully reusable and can be instantiated in any design requiring decade counting functionality. Compared to a microcontroller-based implementation, this HDL design offers parallel processing of all key inputs simultaneously, deterministic response times, and direct hardware-level implementation of the state machine.
+
+\section{Design Insights}
+
+The bottom-up approach enabled independent testing of each module before integration, significantly reducing debugging complexity. The initial combinational alarm logic exhibited race conditions during stage transitions; converting to registered logic sampled on key press edges resolved these issues. The clock inhibit mechanism is the cornerstone of sequential access control, as it physically prevents out-of-sequence key presses from advancing subsequent stages. Stage 3 required an additional interlock on the key signal to prevent ripple-through when the same physical key (B) is used for consecutive stages.
+
+% ==================== 10. APPLICATIONS ====================
+\chapter{Applications}
+
+The CD4017-based digital code lock has applications in educational demonstrations (counter IC architecture, sequential circuit design, hierarchical HDL modeling), physical access control (door locks, safe/locker systems, equipment access), industrial automation (machine startup sequences, safety interlocks, process control gates), and FPGA design training (hierarchical modeling, structural instantiation, testbench development).
+
+% ==================== 11. ADVANTAGES AND LIMITATIONS ====================
+\chapter{Advantages and Limitations}
+
+\section{Advantages}
+
+\begin{enumerate}
+    \item \textbf{Complete Wrong-Code Detection:} 100\% reliability in detecting any incorrect key press
+    \item \textbf{Hierarchical Reusability:} CD4017 module is fully reusable across designs
+    \item \textbf{Modular Debugging:} Hierarchical architecture enables issue isolation
+    \item \textbf{Educational Value:} Deep insight into IC internals
+    \item \textbf{Scalability:} Extensible to more stages or additional keys
+\end{enumerate}
+
+\section{Limitations}
+
+\begin{enumerate}
+    \item \textbf{No Repeated Keys Across Stages:} Cannot support codes like A$\rightarrow$B$\rightarrow$A$\rightarrow$C
+    \item \textbf{Stage LED Security Trade-off:} Stage indicators reveal code progress
+    \item \textbf{Higher Component Count:} More resources than microcontroller solution
+    \item \textbf{Fixed Code Sequence:} Hardwired interconnections, not easily reprogrammable
+    \item \textbf{No Wrong-Attempt Counter:} No tracking of failed attempts for lockout
+\end{enumerate}
+
+% ==================== 12. CONCLUSION ====================
+\chapter{Conclusion}
+
+This project successfully demonstrated the hierarchical design and implementation of a CD4017-based digital code lock with sequential access control and comprehensive wrong-code detection. The CD4017 decade counter was modeled from first principles using Verilog HDL, employing a bottom-up approach comprising a D flip-flop with asynchronous reset, clock control logic, a 5-stage Johnson counter, and a 10-output decoder. Five instances of the CD4017 module were interconnected to form a 5-stage code lock system implementing the code sequence A$\rightarrow$B$\rightarrow$B$\rightarrow$C$\rightarrow$D$\rightarrow$E.
+
+The wrong-code detection mechanism achieved 100\% reliability across all seven test scenarios. The registered alarm logic resolved race conditions present in initial combinational implementations, demonstrating the importance of proper synchronization in sequential circuit design. The project provided valuable learning outcomes in hierarchical HDL design methodology, Johnson counter architectures, sequential access control mechanisms, testbench development, and the comparison between analog IC-based and digital HDL-based implementation approaches.
+
+% ==================== 13. FUTURE SCOPE ====================
+\chapter{Future Scope}
+
+Several enhancements are possible: dynamic code programming via EEPROM-based storage, enhanced security with wrong-attempt counters and lockout mechanisms, advanced user interfaces with matrix keypads and LCD displays, hardware optimization through ASIC tape-out or power consumption reduction, and extended architecture supporting repeated keys in non-consecutive stages, multi-user code support, and audit trail logging.
+
+% ==================== REFERENCES ====================
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+
+\begin{thebibliography}{99}
+
+\bibitem{ti2023cd4017}
+Texas Instruments, ``CD4017B CMOS Decade Counter/Divider with 10 Decoded Outputs,'' Datasheet, SNAS534H, 2023.
+
+\bibitem{mano2013digital}
+M. M. Mano and M. D. Ciletti, \textit{Digital Design}, 5th ed. Pearson, 2013.
+
+\bibitem{palnitkar2003verilog}
+S. Palnitkar, \textit{Verilog HDL: A Guide to Digital Design and Synthesis}, 2nd ed. Prentice Hall, 2003.
+
+\bibitem{electronicshub_johnson}
+``Johnson Counter: Working, Truth Table and Applications,'' Electronics Hub. [Online]. Available: \url{https://www.electronicshub.org/johnson-counter/}
+
+\bibitem{xilinx2020vivado}
+Xilinx, ``Vivado Design Suite User Guide: Synthesis,'' UG901, 2020.
+
+\bibitem{ieee1364_2005}
+IEEE Standard for Verilog Hardware Description Language, IEEE Std 1364-2005.
+
+\bibitem{friendlywire2021cd4017}
+J. Boos, ``CD4017 Code Lock with Wrong Code Detection,'' FriendlyWire.com, Feb. 2021. [Online]. Available: \url{https://friendlywire.com/tutorials/cd4017-code-lock/}
+
+\bibitem{wakerly2006digital}
+J. F. Wakerly, \textit{Digital Design: Principles and Practices}, 4th ed. Pearson, 2006.
+
+\bibitem{brown2008fundamentals}
+S. Brown and Z. Vranesic, \textit{Fundamentals of Digital Logic with Verilog Design}, 3rd ed. McGraw-Hill, 2008.
+
+\bibitem{icarus_verilog}
+S. Williams, ``Icarus Verilog,'' [Online]. Available: \url{https://steveicarus.github.io/iverilog/}
+
+\end{thebibliography}
+
+% ==================== APPENDICES ====================
+\appendix
+
+\chapter{Complete Verilog Code}
+
+\section{dff\_with\_reset.v}
+\begin{lstlisting}[language=Verilog]
+module dff_with_reset(
+    input clk, input reset, input d,
+    output reg q, output qn
+);
+    always @(posedge clk or posedge reset) begin
+        if (reset) q <= 1'b0;
+        else q <= d;
+    end
+    assign qn = ~q;
+endmodule
+\end{lstlisting}
+
+\section{clock\_control.v}
+\begin{lstlisting}[language=Verilog]
+module clock_control(
+    input clk_in, input clk_inhibit, input reset, output clk_out
+);
+    assign clk_out = clk_in & ~clk_inhibit & ~reset;
+endmodule
+\end{lstlisting}
+
+\section{johnson\_counter\_5stage.v}
+\begin{lstlisting}[language=Verilog]
+module johnson_counter_5stage(
+    input clk, input reset, output [4:0] q
+);
+    wire [4:0] qn;
+    wire feedback;
+    assign feedback = ~q[4];
+    dff_with_reset stage0 (.clk(clk), .reset(reset), .d(feedback), .q(q[0]), .qn(qn[0]));
+    dff_with_reset stage1 (.clk(clk), .reset(reset), .d(q[0]), .q(q[1]), .qn(qn[1]));
+    dff_with_reset stage2 (.clk(clk), .reset(reset), .d(q[1]), .q(q[2]), .qn(qn[2]));
+    dff_with_reset stage3 (.clk(clk), .reset(reset), .d(q[2]), .q(q[3]), .qn(qn[3]));
+    dff_with_reset stage4 (.clk(clk), .reset(reset), .d(q[3]), .q(q[4]), .qn(qn[4]));
+endmodule
+\end{lstlisting}
+
+\section{decoder\_10output.v}
+\begin{lstlisting}[language=Verilog]
+module decoder_10output(input [4:0] q, output reg [9:0] out);
+    always @(*) begin
+        case (q)
+            5'b00000: out = 10'b0000000001;
+            5'b10000: out = 10'b1000000000;
+            5'b11000: out = 10'b0100000000;
+            5'b11100: out = 10'b0010000000;
+            5'b11110: out = 10'b0001000000;
+            5'b11111: out = 10'b0000100000;
+            5'b01111: out = 10'b0000010000;
+            5'b00111: out = 10'b0000001000;
+            5'b00011: out = 10'b0000000100;
+            5'b00001: out = 10'b0000000010;
+            default:  out = 10'b0000000001;
+        endcase
+    end
+endmodule
+\end{lstlisting}
+
+\section{cd4017\_top.v}
+\begin{lstlisting}[language=Verilog]
+module cd4017_top(
+    input clk, input reset, input clk_inhibit,
+    output [9:0] Q, output carry_out
+);
+    wire gated_clk;
+    wire [4:0] counter_state;
+    clock_control clk_ctrl (.clk_in(clk), .clk_inhibit(clk_inhibit),
+        .reset(reset), .clk_out(gated_clk));
+    johnson_counter_5stage counter (.clk(gated_clk),
+        .reset(reset), .q(counter_state));
+    decoder_10output decoder (.q(counter_state), .out(Q));
+    assign carry_out = Q[9];
+endmodule
+\end{lstlisting}
+
+\section{code\_lock\_system.v}
+\begin{lstlisting}[language=Verilog]
+module code_lock_system(
+    input [4:0] keys, input reset,
+    output lock_open, output alarm, output [4:0] stage_leds
+);
+    wire [9:0] q1, q2, q3, q4, q5;
+    wire system_reset;
+    reg lock_open_reg;
+    reg alarm_reg;
+    assign system_reset = reset || alarm_reg;
+
+    cd4017_top stage1 (.clk(keys[0]), .reset(system_reset),
+        .clk_inhibit(1'b0), .Q(q1), .carry_out());
+    cd4017_top stage2 (.clk(keys[1]), .reset(system_reset),
+        .clk_inhibit(~q1[1]), .Q(q2), .carry_out());
+    cd4017_top stage3 (.clk(keys[1]), .reset(system_reset),
+        .clk_inhibit(~q2[1] | keys[1]), .Q(q3), .carry_out());
+    cd4017_top stage4 (.clk(keys[2]), .reset(system_reset),
+        .clk_inhibit(~q3[1]), .Q(q4), .carry_out());
+    cd4017_top stage5 (.clk(keys[3]), .reset(system_reset),
+        .clk_inhibit(~q4[1]), .Q(q5), .carry_out());
+
+    wire stage1_active, stage2_active, stage3_active;
+    wire stage4_active, stage5_active;
+    assign stage1_active = (q1[0] == 1'b1);
+    assign stage2_active = (q1[1] == 1'b1) && (q2[1] == 1'b0);
+    assign stage3_active = (q2[1] == 1'b1) && (q3[1] == 1'b0);
+    assign stage4_active = (q3[1] == 1'b1) && (q4[1] == 1'b0);
+    assign stage5_active = (q4[1] == 1'b1) && (q5[1] == 1'b0);
+
+    always @(posedge keys[0] or posedge keys[1] or 
+             posedge keys[2] or posedge keys[3] or 
+             posedge keys[4] or posedge reset) begin
+        if (reset) alarm_reg <= 1'b0;
+        else if (!alarm_reg) begin
+            if (keys[0] && !stage1_active) alarm_reg <= 1'b1;
+            else if (keys[1] && !(stage2_active || stage3_active))
+                alarm_reg <= 1'b1;
+            else if (keys[2] && !stage4_active) alarm_reg <= 1'b1;
+            else if (keys[3] && !stage5_active) alarm_reg <= 1'b1;
+            else if (keys[4] && (q5[1] == 1'b0)) alarm_reg <= 1'b1;
+        end
+    end
+    assign alarm = alarm_reg;
+    assign stage_leds[0] = stage1_active;
+    assign stage_leds[1] = stage2_active;
+    assign stage_leds[2] = stage3_active;
+    assign stage_leds[3] = stage4_active;
+    assign stage_leds[4] = stage5_active;
+
+    always @(posedge keys[4] or posedge reset) begin
+        if (reset) lock_open_reg <= 1'b0;
+        else if (q5[1] == 1'b1 && !alarm_reg) lock_open_reg <= 1'b1;
+    end
+    assign lock_open = lock_open_reg;
+endmodule
+\end{lstlisting}
+
+\end{document}

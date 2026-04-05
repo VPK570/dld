@@ -1,0 +1,1730 @@
+$date
+	Mon Apr  6 02:01:36 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module code_lock_tb $end
+$var wire 5 ! stage_leds [4:0] $end
+$var wire 1 " lock_open $end
+$var wire 1 # alarm $end
+$var reg 5 $ keys [4:0] $end
+$var reg 1 % reset $end
+$scope module uut $end
+$var wire 1 # alarm $end
+$var wire 5 & keys [4:0] $end
+$var wire 1 " lock_open $end
+$var wire 1 % reset $end
+$var wire 1 ' stage1_active $end
+$var wire 1 ( stage2_active $end
+$var wire 1 ) stage3_active $end
+$var wire 1 * stage4_active $end
+$var wire 1 + stage5_active $end
+$var wire 1 , system_reset $end
+$var wire 5 - stage_leds [4:0] $end
+$var wire 10 . q5 [9:0] $end
+$var wire 10 / q4 [9:0] $end
+$var wire 10 0 q3 [9:0] $end
+$var wire 10 1 q2 [9:0] $end
+$var wire 10 2 q1 [9:0] $end
+$var reg 1 3 alarm_reg $end
+$var reg 1 4 lock_open_reg $end
+$scope module stage1 $end
+$var wire 1 5 clk $end
+$var wire 1 6 clk_inhibit $end
+$var wire 1 , reset $end
+$var wire 1 7 gated_clk $end
+$var wire 5 8 counter_state [4:0] $end
+$var wire 1 9 carry_out $end
+$var wire 10 : Q [9:0] $end
+$scope module clk_ctrl $end
+$var wire 1 5 clk_in $end
+$var wire 1 6 clk_inhibit $end
+$var wire 1 7 clk_out $end
+$var wire 1 , reset $end
+$upscope $end
+$scope module counter $end
+$var wire 1 7 clk $end
+$var wire 1 ; feedback $end
+$var wire 1 , reset $end
+$var wire 5 < qn [4:0] $end
+$var wire 5 = q [4:0] $end
+$scope module stage0 $end
+$var wire 1 7 clk $end
+$var wire 1 ; d $end
+$var wire 1 > qn $end
+$var wire 1 , reset $end
+$var reg 1 ? q $end
+$upscope $end
+$scope module stage1 $end
+$var wire 1 7 clk $end
+$var wire 1 @ d $end
+$var wire 1 A qn $end
+$var wire 1 , reset $end
+$var reg 1 B q $end
+$upscope $end
+$scope module stage2 $end
+$var wire 1 7 clk $end
+$var wire 1 C d $end
+$var wire 1 D qn $end
+$var wire 1 , reset $end
+$var reg 1 E q $end
+$upscope $end
+$scope module stage3 $end
+$var wire 1 7 clk $end
+$var wire 1 F d $end
+$var wire 1 G qn $end
+$var wire 1 , reset $end
+$var reg 1 H q $end
+$upscope $end
+$scope module stage4 $end
+$var wire 1 7 clk $end
+$var wire 1 I d $end
+$var wire 1 J qn $end
+$var wire 1 , reset $end
+$var reg 1 K q $end
+$upscope $end
+$upscope $end
+$scope module decoder $end
+$var wire 5 L q [4:0] $end
+$var reg 10 M out [9:0] $end
+$upscope $end
+$upscope $end
+$scope module stage2 $end
+$var wire 1 N clk $end
+$var wire 1 O clk_inhibit $end
+$var wire 1 , reset $end
+$var wire 1 P gated_clk $end
+$var wire 5 Q counter_state [4:0] $end
+$var wire 1 R carry_out $end
+$var wire 10 S Q [9:0] $end
+$scope module clk_ctrl $end
+$var wire 1 N clk_in $end
+$var wire 1 O clk_inhibit $end
+$var wire 1 P clk_out $end
+$var wire 1 , reset $end
+$upscope $end
+$scope module counter $end
+$var wire 1 P clk $end
+$var wire 1 T feedback $end
+$var wire 1 , reset $end
+$var wire 5 U qn [4:0] $end
+$var wire 5 V q [4:0] $end
+$scope module stage0 $end
+$var wire 1 P clk $end
+$var wire 1 T d $end
+$var wire 1 W qn $end
+$var wire 1 , reset $end
+$var reg 1 X q $end
+$upscope $end
+$scope module stage1 $end
+$var wire 1 P clk $end
+$var wire 1 Y d $end
+$var wire 1 Z qn $end
+$var wire 1 , reset $end
+$var reg 1 [ q $end
+$upscope $end
+$scope module stage2 $end
+$var wire 1 P clk $end
+$var wire 1 \ d $end
+$var wire 1 ] qn $end
+$var wire 1 , reset $end
+$var reg 1 ^ q $end
+$upscope $end
+$scope module stage3 $end
+$var wire 1 P clk $end
+$var wire 1 _ d $end
+$var wire 1 ` qn $end
+$var wire 1 , reset $end
+$var reg 1 a q $end
+$upscope $end
+$scope module stage4 $end
+$var wire 1 P clk $end
+$var wire 1 b d $end
+$var wire 1 c qn $end
+$var wire 1 , reset $end
+$var reg 1 d q $end
+$upscope $end
+$upscope $end
+$scope module decoder $end
+$var wire 5 e q [4:0] $end
+$var reg 10 f out [9:0] $end
+$upscope $end
+$upscope $end
+$scope module stage3 $end
+$var wire 1 g clk $end
+$var wire 1 h clk_inhibit $end
+$var wire 1 , reset $end
+$var wire 1 i gated_clk $end
+$var wire 5 j counter_state [4:0] $end
+$var wire 1 k carry_out $end
+$var wire 10 l Q [9:0] $end
+$scope module clk_ctrl $end
+$var wire 1 g clk_in $end
+$var wire 1 h clk_inhibit $end
+$var wire 1 i clk_out $end
+$var wire 1 , reset $end
+$upscope $end
+$scope module counter $end
+$var wire 1 i clk $end
+$var wire 1 m feedback $end
+$var wire 1 , reset $end
+$var wire 5 n qn [4:0] $end
+$var wire 5 o q [4:0] $end
+$scope module stage0 $end
+$var wire 1 i clk $end
+$var wire 1 m d $end
+$var wire 1 p qn $end
+$var wire 1 , reset $end
+$var reg 1 q q $end
+$upscope $end
+$scope module stage1 $end
+$var wire 1 i clk $end
+$var wire 1 r d $end
+$var wire 1 s qn $end
+$var wire 1 , reset $end
+$var reg 1 t q $end
+$upscope $end
+$scope module stage2 $end
+$var wire 1 i clk $end
+$var wire 1 u d $end
+$var wire 1 v qn $end
+$var wire 1 , reset $end
+$var reg 1 w q $end
+$upscope $end
+$scope module stage3 $end
+$var wire 1 i clk $end
+$var wire 1 x d $end
+$var wire 1 y qn $end
+$var wire 1 , reset $end
+$var reg 1 z q $end
+$upscope $end
+$scope module stage4 $end
+$var wire 1 i clk $end
+$var wire 1 { d $end
+$var wire 1 | qn $end
+$var wire 1 , reset $end
+$var reg 1 } q $end
+$upscope $end
+$upscope $end
+$scope module decoder $end
+$var wire 5 ~ q [4:0] $end
+$var reg 10 !" out [9:0] $end
+$upscope $end
+$upscope $end
+$scope module stage4 $end
+$var wire 1 "" clk $end
+$var wire 1 #" clk_inhibit $end
+$var wire 1 , reset $end
+$var wire 1 $" gated_clk $end
+$var wire 5 %" counter_state [4:0] $end
+$var wire 1 &" carry_out $end
+$var wire 10 '" Q [9:0] $end
+$scope module clk_ctrl $end
+$var wire 1 "" clk_in $end
+$var wire 1 #" clk_inhibit $end
+$var wire 1 $" clk_out $end
+$var wire 1 , reset $end
+$upscope $end
+$scope module counter $end
+$var wire 1 $" clk $end
+$var wire 1 (" feedback $end
+$var wire 1 , reset $end
+$var wire 5 )" qn [4:0] $end
+$var wire 5 *" q [4:0] $end
+$scope module stage0 $end
+$var wire 1 $" clk $end
+$var wire 1 (" d $end
+$var wire 1 +" qn $end
+$var wire 1 , reset $end
+$var reg 1 ," q $end
+$upscope $end
+$scope module stage1 $end
+$var wire 1 $" clk $end
+$var wire 1 -" d $end
+$var wire 1 ." qn $end
+$var wire 1 , reset $end
+$var reg 1 /" q $end
+$upscope $end
+$scope module stage2 $end
+$var wire 1 $" clk $end
+$var wire 1 0" d $end
+$var wire 1 1" qn $end
+$var wire 1 , reset $end
+$var reg 1 2" q $end
+$upscope $end
+$scope module stage3 $end
+$var wire 1 $" clk $end
+$var wire 1 3" d $end
+$var wire 1 4" qn $end
+$var wire 1 , reset $end
+$var reg 1 5" q $end
+$upscope $end
+$scope module stage4 $end
+$var wire 1 $" clk $end
+$var wire 1 6" d $end
+$var wire 1 7" qn $end
+$var wire 1 , reset $end
+$var reg 1 8" q $end
+$upscope $end
+$upscope $end
+$scope module decoder $end
+$var wire 5 9" q [4:0] $end
+$var reg 10 :" out [9:0] $end
+$upscope $end
+$upscope $end
+$scope module stage5 $end
+$var wire 1 ;" clk $end
+$var wire 1 <" clk_inhibit $end
+$var wire 1 , reset $end
+$var wire 1 =" gated_clk $end
+$var wire 5 >" counter_state [4:0] $end
+$var wire 1 ?" carry_out $end
+$var wire 10 @" Q [9:0] $end
+$scope module clk_ctrl $end
+$var wire 1 ;" clk_in $end
+$var wire 1 <" clk_inhibit $end
+$var wire 1 =" clk_out $end
+$var wire 1 , reset $end
+$upscope $end
+$scope module counter $end
+$var wire 1 =" clk $end
+$var wire 1 A" feedback $end
+$var wire 1 , reset $end
+$var wire 5 B" qn [4:0] $end
+$var wire 5 C" q [4:0] $end
+$scope module stage0 $end
+$var wire 1 =" clk $end
+$var wire 1 A" d $end
+$var wire 1 D" qn $end
+$var wire 1 , reset $end
+$var reg 1 E" q $end
+$upscope $end
+$scope module stage1 $end
+$var wire 1 =" clk $end
+$var wire 1 F" d $end
+$var wire 1 G" qn $end
+$var wire 1 , reset $end
+$var reg 1 H" q $end
+$upscope $end
+$scope module stage2 $end
+$var wire 1 =" clk $end
+$var wire 1 I" d $end
+$var wire 1 J" qn $end
+$var wire 1 , reset $end
+$var reg 1 K" q $end
+$upscope $end
+$scope module stage3 $end
+$var wire 1 =" clk $end
+$var wire 1 L" d $end
+$var wire 1 M" qn $end
+$var wire 1 , reset $end
+$var reg 1 N" q $end
+$upscope $end
+$scope module stage4 $end
+$var wire 1 =" clk $end
+$var wire 1 O" d $end
+$var wire 1 P" qn $end
+$var wire 1 , reset $end
+$var reg 1 Q" q $end
+$upscope $end
+$upscope $end
+$scope module decoder $end
+$var wire 5 R" q [4:0] $end
+$var reg 10 S" out [9:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope task apply_reset $end
+$upscope $end
+$scope task press_key $end
+$var reg 3 T" key_num [2:0] $end
+$upscope $end
+$upscope $end
+$scope module code_lock_tb $end
+$scope module uut $end
+$scope module stage1 $end
+$scope module clk_ctrl $end
+$upscope $end
+$scope module counter $end
+$scope module stage0 $end
+$upscope $end
+$scope module stage1 $end
+$upscope $end
+$scope module stage2 $end
+$upscope $end
+$scope module stage3 $end
+$upscope $end
+$scope module stage4 $end
+$upscope $end
+$upscope $end
+$scope module decoder $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module code_lock_tb $end
+$scope module uut $end
+$scope module stage2 $end
+$scope module clk_ctrl $end
+$upscope $end
+$scope module counter $end
+$scope module stage0 $end
+$upscope $end
+$scope module stage1 $end
+$upscope $end
+$scope module stage2 $end
+$upscope $end
+$scope module stage3 $end
+$upscope $end
+$scope module stage4 $end
+$upscope $end
+$upscope $end
+$scope module decoder $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module code_lock_tb $end
+$scope module uut $end
+$scope module stage3 $end
+$scope module clk_ctrl $end
+$upscope $end
+$scope module counter $end
+$scope module stage0 $end
+$upscope $end
+$scope module stage1 $end
+$upscope $end
+$scope module stage2 $end
+$upscope $end
+$scope module stage3 $end
+$upscope $end
+$scope module stage4 $end
+$upscope $end
+$upscope $end
+$scope module decoder $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module code_lock_tb $end
+$scope module uut $end
+$scope module stage4 $end
+$scope module clk_ctrl $end
+$upscope $end
+$scope module counter $end
+$scope module stage0 $end
+$upscope $end
+$scope module stage1 $end
+$upscope $end
+$scope module stage2 $end
+$upscope $end
+$scope module stage3 $end
+$upscope $end
+$scope module stage4 $end
+$upscope $end
+$upscope $end
+$scope module decoder $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module code_lock_tb $end
+$scope module uut $end
+$scope module stage5 $end
+$scope module clk_ctrl $end
+$upscope $end
+$scope module counter $end
+$scope module stage0 $end
+$upscope $end
+$scope module stage1 $end
+$upscope $end
+$scope module stage2 $end
+$upscope $end
+$scope module stage3 $end
+$upscope $end
+$scope module stage4 $end
+$upscope $end
+$upscope $end
+$scope module decoder $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx T"
+b1 S"
+b0 R"
+0Q"
+1P"
+0O"
+0N"
+1M"
+0L"
+0K"
+1J"
+0I"
+0H"
+1G"
+0F"
+0E"
+1D"
+b0 C"
+b11111 B"
+1A"
+b1 @"
+0?"
+b0 >"
+0="
+1<"
+0;"
+b1 :"
+b0 9"
+08"
+17"
+06"
+05"
+14"
+03"
+02"
+11"
+00"
+0/"
+1."
+0-"
+0,"
+1+"
+b0 *"
+b11111 )"
+1("
+b1 '"
+0&"
+b0 %"
+0$"
+1#"
+0""
+b1 !"
+b0 ~
+0}
+1|
+0{
+0z
+1y
+0x
+0w
+1v
+0u
+0t
+1s
+0r
+0q
+1p
+b0 o
+b11111 n
+1m
+b1 l
+0k
+b0 j
+0i
+1h
+0g
+b1 f
+b0 e
+0d
+1c
+0b
+0a
+1`
+0_
+0^
+1]
+0\
+0[
+1Z
+0Y
+0X
+1W
+b0 V
+b11111 U
+1T
+b1 S
+0R
+b0 Q
+0P
+1O
+0N
+b1 M
+b0 L
+0K
+1J
+0I
+0H
+1G
+0F
+0E
+1D
+0C
+0B
+1A
+0@
+0?
+1>
+b0 =
+b11111 <
+1;
+b1 :
+09
+b0 8
+07
+06
+05
+04
+03
+b1 2
+b1 1
+b1 0
+b1 /
+b1 .
+b1 -
+1,
+0+
+0*
+0)
+0(
+1'
+b0 &
+1%
+b0 $
+0#
+0"
+b1 !
+$end
+#50000
+0,
+0%
+#100000
+b10 !
+b10 -
+1(
+0'
+0O
+b11110 <
+1@
+b10 2
+b10 :
+b10 M
+b1 8
+b1 =
+b1 L
+0>
+1?
+17
+15
+b1 $
+b1 &
+b0 T"
+#200000
+07
+05
+b0 $
+b0 &
+#300000
+b100 !
+b100 -
+1)
+0(
+b11110 U
+1Y
+b10 1
+b10 S
+b10 f
+b1 Q
+b1 V
+b1 e
+0W
+1X
+1P
+1N
+1g
+b10 $
+b10 &
+b1 T"
+#400000
+0P
+0h
+0N
+0g
+b0 $
+b0 &
+#500000
+b1010 !
+b1010 -
+1(
+1*
+0)
+0#"
+b11100 U
+1\
+b100 1
+b100 S
+b100 f
+b11110 n
+1r
+b10 0
+b10 l
+b10 !"
+b11 Q
+b11 V
+b11 e
+b1 j
+b1 o
+b1 ~
+0Z
+0p
+1[
+1q
+1P
+0i
+1h
+1N
+1g
+b10 $
+b10 &
+#600000
+0P
+0N
+0g
+b0 $
+b0 &
+#700000
+b10010 !
+b10010 -
+1+
+0*
+0<"
+b11110 )"
+1-"
+b10 /
+b10 '"
+b10 :"
+b1 %"
+b1 *"
+b1 9"
+0+"
+1,"
+1$"
+1""
+b100 $
+b100 &
+b10 T"
+#800000
+0$"
+0""
+b0 $
+b0 &
+#900000
+b10 !
+b10 -
+0+
+b11110 B"
+1F"
+b10 .
+b10 @"
+b10 S"
+b1 >"
+b1 C"
+b1 R"
+0D"
+1E"
+1="
+1;"
+b1000 $
+b1000 &
+b11 T"
+#1000000
+0="
+0;"
+b0 $
+b0 &
+#1100000
+1"
+14
+b10000 $
+b10000 &
+b100 T"
+#1200000
+b0 $
+b0 &
+#1400000
+b1 !
+b1 -
+0(
+1'
+1O
+1#"
+1<"
+b11111 <
+0@
+b1 2
+b1 :
+b1 M
+b11111 U
+0\
+0Y
+b1 1
+b1 S
+b1 f
+b11111 n
+0r
+b1 0
+b1 l
+b1 !"
+b11111 )"
+0-"
+b1 /
+b1 '"
+b1 :"
+b11111 B"
+0F"
+b1 .
+b1 @"
+b1 S"
+b0 8
+b0 =
+b0 L
+b0 Q
+b0 V
+b0 e
+b0 j
+b0 o
+b0 ~
+b0 %"
+b0 *"
+b0 9"
+b0 >"
+b0 C"
+b0 R"
+1>
+1Z
+1W
+1p
+1+"
+1D"
+0?
+0[
+0X
+0q
+0,"
+0E"
+0"
+04
+1,
+1%
+#1450000
+0,
+0%
+#1500000
+1,
+1#
+13
+1N
+1g
+b10 $
+b10 &
+b1 T"
+#1600000
+0N
+0g
+b0 $
+b0 &
+#1800000
+0#
+03
+1%
+#1850000
+0,
+0%
+#1900000
+b10 !
+b10 -
+1(
+0'
+0O
+b11110 <
+1@
+b10 2
+b10 :
+b10 M
+b1 8
+b1 =
+b1 L
+0>
+1?
+17
+15
+b1 $
+b1 &
+b0 T"
+#2000000
+07
+05
+b0 $
+b0 &
+#2100000
+b1 !
+b1 -
+0(
+1'
+1O
+b11111 <
+0@
+b1 2
+b1 :
+b1 M
+b0 8
+b0 =
+b0 L
+1>
+0?
+1,
+1#
+13
+1""
+b100 $
+b100 &
+b10 T"
+#2200000
+0""
+b0 $
+b0 &
+#2400000
+0#
+03
+1%
+#2450000
+0,
+0%
+#2500000
+b10 !
+b10 -
+1(
+0'
+0O
+b11110 <
+1@
+b10 2
+b10 :
+b10 M
+b1 8
+b1 =
+b1 L
+0>
+1?
+17
+15
+b1 $
+b1 &
+b0 T"
+#2600000
+07
+05
+b0 $
+b0 &
+#2700000
+b100 !
+b100 -
+1)
+0(
+b11110 U
+1Y
+b10 1
+b10 S
+b10 f
+b1 Q
+b1 V
+b1 e
+0W
+1X
+1P
+1N
+1g
+b10 $
+b10 &
+b1 T"
+#2800000
+0P
+0h
+0N
+0g
+b0 $
+b0 &
+#2900000
+b1 !
+b1 -
+0)
+1h
+1'
+1O
+b11111 <
+0@
+b1 2
+b1 :
+b1 M
+b11111 U
+0Y
+b1 1
+b1 S
+b1 f
+b0 8
+b0 =
+b0 L
+b0 Q
+b0 V
+b0 e
+1>
+1W
+0?
+0X
+1,
+1#
+13
+1""
+b100 $
+b100 &
+b10 T"
+#3000000
+0""
+b0 $
+b0 &
+#3200000
+0#
+03
+1%
+#3250000
+0,
+0%
+#3300000
+b10 !
+b10 -
+1(
+0'
+0O
+b11110 <
+1@
+b10 2
+b10 :
+b10 M
+b1 8
+b1 =
+b1 L
+0>
+1?
+17
+15
+b1 $
+b1 &
+b0 T"
+#3400000
+07
+05
+b0 $
+b0 &
+#3500000
+b100 !
+b100 -
+1)
+0(
+b11110 U
+1Y
+b10 1
+b10 S
+b10 f
+b1 Q
+b1 V
+b1 e
+0W
+1X
+1P
+1N
+1g
+b10 $
+b10 &
+b1 T"
+#3600000
+0P
+0h
+0N
+0g
+b0 $
+b0 &
+#3700000
+b1 !
+b1 -
+0)
+1h
+1'
+1O
+b11111 <
+0@
+b1 2
+b1 :
+b1 M
+b11111 U
+0Y
+b1 1
+b1 S
+b1 f
+b0 8
+b0 =
+b0 L
+b0 Q
+b0 V
+b0 e
+1>
+1W
+0?
+0X
+1,
+1#
+13
+b10000 $
+b10000 &
+b100 T"
+#3800000
+b0 $
+b0 &
+#4000000
+0#
+03
+1%
+#4050000
+0,
+0%
+#4100000
+b10 !
+b10 -
+1(
+0'
+0O
+b11110 <
+1@
+b10 2
+b10 :
+b10 M
+b1 8
+b1 =
+b1 L
+0>
+1?
+17
+15
+b1 $
+b1 &
+b0 T"
+#4200000
+07
+05
+b0 $
+b0 &
+#4300000
+b100 !
+b100 -
+1)
+0(
+b11110 U
+1Y
+b10 1
+b10 S
+b10 f
+b1 Q
+b1 V
+b1 e
+0W
+1X
+1P
+1N
+1g
+b10 $
+b10 &
+b1 T"
+#4400000
+0P
+0h
+0N
+0g
+b0 $
+b0 &
+#4500000
+b1 !
+b1 -
+0)
+1h
+1'
+1O
+b11111 <
+0@
+b1 2
+b1 :
+b1 M
+b11111 U
+0Y
+b1 1
+b1 S
+b1 f
+b0 8
+b0 =
+b0 L
+b0 Q
+b0 V
+b0 e
+1>
+1W
+0?
+0X
+1,
+1%
+#4550000
+0,
+0%
+#4600000
+b10 !
+b10 -
+1(
+0'
+0O
+b11110 <
+1@
+b10 2
+b10 :
+b10 M
+b1 8
+b1 =
+b1 L
+0>
+1?
+17
+15
+b1 $
+b1 &
+b0 T"
+#4700000
+07
+05
+b0 $
+b0 &
+#4800000
+b100 !
+b100 -
+1)
+0(
+b11110 U
+1Y
+b10 1
+b10 S
+b10 f
+b1 Q
+b1 V
+b1 e
+0W
+1X
+1P
+1N
+1g
+b10 $
+b10 &
+b1 T"
+#4900000
+0P
+0h
+0N
+0g
+b0 $
+b0 &
+#5000000
+b1010 !
+b1010 -
+1(
+1*
+0)
+0#"
+b11100 U
+1\
+b100 1
+b100 S
+b100 f
+b11110 n
+1r
+b10 0
+b10 l
+b10 !"
+b11 Q
+b11 V
+b11 e
+b1 j
+b1 o
+b1 ~
+0Z
+0p
+1[
+1q
+1P
+0i
+1h
+1N
+1g
+b10 $
+b10 &
+#5100000
+0P
+0N
+0g
+b0 $
+b0 &
+#5200000
+b10010 !
+b10010 -
+1+
+0*
+0<"
+b11110 )"
+1-"
+b10 /
+b10 '"
+b10 :"
+b1 %"
+b1 *"
+b1 9"
+0+"
+1,"
+1$"
+1""
+b100 $
+b100 &
+b10 T"
+#5300000
+0$"
+0""
+b0 $
+b0 &
+#5400000
+b10 !
+b10 -
+0+
+b11110 B"
+1F"
+b10 .
+b10 @"
+b10 S"
+b1 >"
+b1 C"
+b1 R"
+0D"
+1E"
+1="
+1;"
+b1000 $
+b1000 &
+b11 T"
+#5500000
+0="
+0;"
+b0 $
+b0 &
+#5600000
+1"
+14
+b10000 $
+b10000 &
+b100 T"
+#5700000
+b0 $
+b0 &
+#5900000
+b1 !
+b1 -
+0(
+1'
+1O
+1#"
+1<"
+b11111 <
+0@
+b1 2
+b1 :
+b1 M
+b11111 U
+0\
+0Y
+b1 1
+b1 S
+b1 f
+b11111 n
+0r
+b1 0
+b1 l
+b1 !"
+b11111 )"
+0-"
+b1 /
+b1 '"
+b1 :"
+b11111 B"
+0F"
+b1 .
+b1 @"
+b1 S"
+b0 8
+b0 =
+b0 L
+b0 Q
+b0 V
+b0 e
+b0 j
+b0 o
+b0 ~
+b0 %"
+b0 *"
+b0 9"
+b0 >"
+b0 C"
+b0 R"
+1>
+1W
+1Z
+1p
+1+"
+1D"
+0?
+0X
+0[
+0q
+0,"
+0E"
+0"
+04
+1,
+1%
+#5950000
+0,
+0%
+#6000000
+b10 !
+b10 -
+1(
+0'
+0O
+b11110 <
+1@
+b10 2
+b10 :
+b10 M
+b1 8
+b1 =
+b1 L
+0>
+1?
+17
+15
+b1 $
+b1 &
+b0 T"
+#6100000
+07
+05
+b0 $
+b0 &
+#6200000
+b1 !
+b1 -
+0(
+1'
+1O
+b11111 <
+0@
+b1 2
+b1 :
+b1 M
+b0 8
+b0 =
+b0 L
+1>
+0?
+1,
+1#
+13
+1""
+b100 $
+b100 &
+b10 T"
+#6300000
+0""
+b0 $
+b0 &
+#6500000
+0#
+03
+1%
+#6550000
+0,
+0%
+#6600000
+b10 !
+b10 -
+1(
+0'
+0O
+b11110 <
+1@
+b10 2
+b10 :
+b10 M
+b1 8
+b1 =
+b1 L
+0>
+1?
+17
+15
+b1 $
+b1 &
+b0 T"
+#6700000
+07
+05
+b0 $
+b0 &
+#6800000
+b100 !
+b100 -
+1)
+0(
+b11110 U
+1Y
+b10 1
+b10 S
+b10 f
+b1 Q
+b1 V
+b1 e
+0W
+1X
+1P
+1N
+1g
+b10 $
+b10 &
+b1 T"
+#6900000
+0P
+0h
+0N
+0g
+b0 $
+b0 &
+#7000000
+b1 !
+b1 -
+0)
+1h
+1'
+1O
+b11111 <
+0@
+b1 2
+b1 :
+b1 M
+b11111 U
+0Y
+b1 1
+b1 S
+b1 f
+b0 8
+b0 =
+b0 L
+b0 Q
+b0 V
+b0 e
+1>
+1W
+0?
+0X
+1,
+1#
+13
+1""
+b100 $
+b100 &
+b10 T"
+#7100000
+0""
+b0 $
+b0 &
+#7300000
+0#
+03
+1%
+#7350000
+0,
+0%
+#7400000
+b10 !
+b10 -
+1(
+0'
+0O
+b11110 <
+1@
+b10 2
+b10 :
+b10 M
+b1 8
+b1 =
+b1 L
+0>
+1?
+17
+15
+b1 $
+b1 &
+b0 T"
+#7500000
+07
+05
+b0 $
+b0 &
+#7600000
+b100 !
+b100 -
+1)
+0(
+b11110 U
+1Y
+b10 1
+b10 S
+b10 f
+b1 Q
+b1 V
+b1 e
+0W
+1X
+1P
+1N
+1g
+b10 $
+b10 &
+b1 T"
+#7700000
+0P
+0h
+0N
+0g
+b0 $
+b0 &
+#7800000
+b1010 !
+b1010 -
+1(
+1*
+0)
+0#"
+b11100 U
+1\
+b100 1
+b100 S
+b100 f
+b11110 n
+1r
+b10 0
+b10 l
+b10 !"
+b11 Q
+b11 V
+b11 e
+b1 j
+b1 o
+b1 ~
+0Z
+0p
+1[
+1q
+1P
+0i
+1h
+1N
+1g
+b10 $
+b10 &
+#7900000
+0P
+0N
+0g
+b0 $
+b0 &
+#8000000
+b10010 !
+b10010 -
+1+
+0*
+0<"
+b11110 )"
+1-"
+b10 /
+b10 '"
+b10 :"
+b1 %"
+b1 *"
+b1 9"
+0+"
+1,"
+1$"
+1""
+b100 $
+b100 &
+b10 T"
+#8100000
+0$"
+0""
+b0 $
+b0 &
+#8200000
+b10 !
+b10 -
+0+
+b11110 B"
+1F"
+b10 .
+b10 @"
+b10 S"
+b1 >"
+b1 C"
+b1 R"
+0D"
+1E"
+1="
+1;"
+b1000 $
+b1000 &
+b11 T"
+#8300000
+0="
+0;"
+b0 $
+b0 &
+#8400000
+1"
+14
+b10000 $
+b10000 &
+b100 T"
+#8500000
+b0 $
+b0 &
+#9200000
